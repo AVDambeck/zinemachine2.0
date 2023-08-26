@@ -1,0 +1,42 @@
+#+title: making zinemachine 2.0
+
+* What is wrong with 1.0?
+1. doesn't work. pyhtml2pdf doesnt like my chromium and im tired of fighting with this module
+2. unlogical structure. After stepping away for a few weeks I no logner understand how it works
+
+* Do List! [3/8]
+** DONE Touch render.py
+:LOGBOOK:
+CLOCK: [2023-08-26 Sat 15:14]--[2023-08-26 Sat 15:15] =>  0:01
+:END:
+** DONE Set up dirs.
+** DONE Git Init
+:LOGBOOK:
+CLOCK: [2023-08-26 Sat 15:16]--[2023-08-26 Sat 15:17] =>  0:01
+:END:
+** TODO Make html2pdf work [7/7]
+*** DONE Hello world
+:LOGBOOK:
+CLOCK: [2023-08-26 Sat 15:17]--[2023-08-26 Sat 15:21] =>  0:04
+:END:
+
+*** DONE Take paths
+:LOGBOOK:
+CLOCK: [2023-08-26 Sat 15:22]--[2023-08-26 Sat 15:27] =>  0:05
+:END:
+*** DONE Put a real file there
+*** DONE Open Selenium
+:LOGBOOK:
+CLOCK: [2023-08-26 Sat 15:43]--[2023-08-26 Sat 15:50] =>  0:07
+:END:
+*** DONE Go to the website
+*** DONE Close Selenium
+*** DONE Pull driver and wait from config
+:LOGBOOK:
+CLOCK: [2023-08-26 Sat 16:07]--[2023-08-26 Sat 16:18] =>  0:11
+:END:
+*** TODO make it print!
+** TODO Make generic work
+** TODO Celebrate proof of concept
+** TODO Make accordian
+** TODO Make digital.
