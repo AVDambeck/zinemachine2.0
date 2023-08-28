@@ -65,7 +65,7 @@ CLOCK: [2023-08-27 Sun 19:31]--[2023-08-27 Sun 19:35] =>  0:04
 CLOCK: [2023-08-27 Sun 19:35]--[2023-08-27 Sun 21:14] =>  1:39
 :END:
 ** DONE Celebrate proof of concept
-* Do List 1.5! [14/23]
+* Do List 1.5! [20/26]
 So in theory, all the technical challenges are adressed. Current stratagy is just follow a zine all the way through my map, and make the shit actually work as it passes through
 ** DONE Get the zine scanned and prepared (generic)
 :LOGBOOK:
@@ -101,15 +101,27 @@ CLOCK: [2023-08-28 Mon 14:31]--[2023-08-28 Mon 14:33] =>  0:02
 :LOGBOOK:
 CLOCK: [2023-08-28 Mon 14:34]--[2023-08-28 Mon 14:35] =>  0:01
 :END:
-** TODO Test and fix until pass
+** DONE Test and fix until pass
 :LOGBOOK:
-CLOCK: [2023-08-28 Mon 14:35]
+CLOCK: [2023-08-28 Mon 14:35]--[2023-08-28 Mon 14:47] =>  0:12
 :END:
-** TODO Successfully cut the zine. (its now in inpages)
+** DONE Successfully cut the zine. (its now in inpages)
 ** OKAY Make the caching util
-** TODO Make a template for accordian
-** TODO Begin work on render.py
+** DONE Take a lil break
+** DONE Make a template for accordian
+:LOGBOOK:
+CLOCK: [2023-08-28 Mon 16:24]--[2023-08-28 Mon 16:27] =>  0:03
+:END:
+** DONE Begin work on render.py
+** DONE Set up the JSON
+:LOGBOOK:
+CLOCK: [2023-08-28 Mon 16:47]--[2023-08-28 Mon 16:50] =>  0:03
+:END:
 ** TODO Cache front four pages
+:LOGBOOK:
+CLOCK: [2023-08-28 Mon 16:50]
+CLOCK: [2023-08-28 Mon 16:27]--[2023-08-28 Mon 16:46] =>  0:19
+:END:
 ** TODO Render them
 ** TODO Cache back four pages
 ** TODO Render them

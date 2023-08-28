@@ -22,6 +22,7 @@ from pypdf import PdfReader, PdfWriter
 import subprocess
 
 from util import cache
+from util import directory
 
 reader = PdfReader("SOURCE.pdf")
 number_of_pages = len(reader.pages)
@@ -73,14 +74,15 @@ for page_num in range(0,number_of_pages):
             #4 extract first page of page of pdf to cache
             writer = PdfWriter()
             writer.add_page(reader.pages[page_num])
-            with open(cache.cache_directory + "page.pdf", "wb") as f:
+            page_path = directory.cache + "page.pdf"
+            with open(page_path, "wb") as f:
                         writer.write(f)
 
             #5 for pagelet specified in tempalte, crop and export .jpg
-            # This part is particularly slow for longer files. I don't think its a big enough issue to address, but this would be fairly easy to parrelelize with asyncio. Something like extreact all the pages at once, and then have a sepreate process for each page. If your really nuts you could try do a seperate process for each pagelet.
+            # This part is particularly slow for longer files. I don't think its a big enough issue to address, but this would be fairly easy to parrelelize with asyncio. Something like: def async_pagelet_process(pagelet_info): conversion command brr brr; for i in pagelets: async_pagelet_process(i["info"]).
             logging.info(f'begin page {page_num}')
             for pagelet in template["pagelets"]:
-                        dimension = pagelet["dimenstion"]
+                        dimension = pagelet["dimension"]
                         location = pagelet["location"]
                         rotation = pagelet["rotation"]
 
@@ -91,7 +93,7 @@ for page_num in range(0,number_of_pages):
 
                         pagelet_name = f"img{pagelet_index:02}.jpg"
                         logging.info(pagelet_name)
-                        conversion_command = f"magick -density {output_dpi} ../cache/page.pdf -flatten -crop {xlen_px}x{ylen_px}+{xoff_px}+{yoff_px} -rotate {rotate} {pagelet_name};"
+                        conversion_command = f"magick -density {output_dpi} {page_path} -flatten -crop {xlen_px}x{ylen_px}+{xoff_px}+{yoff_px} -rotate {rotation} {module_directory}/inpagelets/{pagelet_name};"
                         logging.info(conversion_command)
                         subprocess.run(conversion_command, shell=True)
                         pagelet_index += 1

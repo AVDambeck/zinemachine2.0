@@ -1,0 +1,15 @@
+{
+    "template_name":"Accordian",
+    "message":"",
+    "pagesize":[11, 8.5],
+    "pagelets":[
+        {"id":1, "dimension": [2.75, 4.25], "location": [0, 0], "rotation": 0},
+        {"id":2, "dimension": [2.75, 4.25], "location": [2.75, 0], "rotation": 0},
+        {"id":3, "dimension": [2.75, 4.25], "location": [5.5, 0], "rotation": 0},
+        {"id":4, "dimension": [2.75, 4.25], "location": [8.25, 0], "rotation": 0},
+        {"id":4, "dimension": [2.75, 4.25], "location": [0, 4.25], "rotation": 180},
+        {"id":3, "dimension": [2.75, 4.25], "location": [2.75, 4.25], "rotation": 180},
+        {"id":2, "dimension": [2.75, 4.25], "location": [5.5, 4.25], "rotation": 180},
+        {"id":1, "dimension": [2.75, 4.25], "location": [8.25, 4.25], "rotation": 180}
+    ]
+}
