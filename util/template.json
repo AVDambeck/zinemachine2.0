@@ -1,0 +1,15 @@
+{
+    "template_name":"Generic - Dev",
+    "message":"Development template... how did you get this?",
+    "pagesize":[11, 8.5],
+    "pagelets":[
+        {"dimension": [2.75, 4.25], "location": [0, 0], "rotation": 0},
+        {"dimension": [2.75, 4.25], "location": [2.75, 0], "rotation": 0},
+        {"dimension": [2.75, 4.25], "location": [5.5, 0], "rotation": 0},
+        {"dimension": [2.75, 4.25], "location": [8.25, 0], "rotation": 0},
+        {"dimension": [2.75, 4.25], "location": [0, 4.25], "rotation": 0},
+        {"dimension": [2.75, 4.25], "location": [2.75, 4.25], "rotation": 0},
+        {"dimension": [2.75, 4.25], "location": [5.5, 4.25], "rotation": 0},
+        {"dimension": [2.75, 4.25], "location": [8.25, 4.25], "rotation": 0}
+    ]
+}

@@ -3,8 +3,9 @@
 * What is wrong with 1.0?
 1. doesn't work. pyhtml2pdf doesnt like my chromium and im tired of fighting with this module
 2. unlogical structure. After stepping away for a few weeks I no logner understand how it works
+3. It wasn't really an issue but preformance was pretty slow. Using a whole as broswer to render one page is pretty slow :/
 
-* Do List! [3/8]
+* Do List! 1.0 [8/8]
 ** DONE Touch render.py
 :LOGBOOK:
 CLOCK: [2023-08-26 Sat 15:14]--[2023-08-26 Sat 15:15] =>  0:01
@@ -14,7 +15,7 @@ CLOCK: [2023-08-26 Sat 15:14]--[2023-08-26 Sat 15:15] =>  0:01
 :LOGBOOK:
 CLOCK: [2023-08-26 Sat 15:16]--[2023-08-26 Sat 15:17] =>  0:01
 :END:
-** TODO Make html2pdf work [7/7]
+** KILL Make html2pdf work [8/8]
 *** DONE Hello world
 :LOGBOOK:
 CLOCK: [2023-08-26 Sat 15:17]--[2023-08-26 Sat 15:21] =>  0:04
@@ -35,8 +36,82 @@ CLOCK: [2023-08-26 Sat 15:43]--[2023-08-26 Sat 15:50] =>  0:07
 :LOGBOOK:
 CLOCK: [2023-08-26 Sat 16:07]--[2023-08-26 Sat 16:18] =>  0:11
 :END:
-*** TODO make it print!
-** TODO Make generic work
-** TODO Celebrate proof of concept
-** TODO Make accordian
-** TODO Make digital.
+*** KILL make it print!
+** KILL Make generic work
+** KILL Celebrate proof of concept
+** KILL Make accordian
+** KILL Make digital.
+* Do List! 2.0 [7/7]
+Okay so actually fuck html, fuck markdown, i'm just gonna make the rendering tool myself from a json file.
+** DONE Hello World with Pillow
+:LOGBOOK:
+CLOCK: [2023-08-27 Sun 14:33]--[2023-08-27 Sun 15:29] =>  0:56
+:END:
+** DONE Render a blank page
+:LOGBOOK:
+CLOCK: [2023-08-27 Sun 15:29]--[2023-08-27 Sun 15:36] =>  0:07
+:END:
+** DONE Get programmer art
+:LOGBOOK:
+CLOCK: [2023-08-27 Sun 16:03]--[2023-08-27 Sun 16:07] =>  0:04
+:END:
+** DONE Render a pagelet on a page
+** DONE Make JSON for generic (can you borrow from divider?)
+:LOGBOOK:
+CLOCK: [2023-08-27 Sun 19:31]--[2023-08-27 Sun 19:35] =>  0:04
+:END:
+** DONE Render according to the JSON
+:LOGBOOK:
+CLOCK: [2023-08-27 Sun 19:35]--[2023-08-27 Sun 21:14] =>  1:39
+:END:
+** DONE Celebrate proof of concept
+* Do List 1.5! [14/23]
+So in theory, all the technical challenges are adressed. Current stratagy is just follow a zine all the way through my map, and make the shit actually work as it passes through
+** DONE Get the zine scanned and prepared (generic)
+:LOGBOOK:
+CLOCK: [2023-08-28 Mon 13:24]--[2023-08-28 Mon 13:34] =>  0:10
+:END:
+** DONE import the divider tool
+:LOGBOOK:
+CLOCK: [2023-08-28 Mon 13:34]--[2023-08-28 Mon 13:41] =>  0:07
+:END:
+** KILL Try: attempt to cut up the zine
+** DONE Actually the divider needs caching util.
+:LOGBOOK:
+CLOCK: [2023-08-28 Mon 13:41]--[2023-08-28 Mon 13:58] =>  0:17
+:END:
+** DONE except: fix the divier tool
+:LOGBOOK:
+CLOCK: [2023-08-28 Mon 13:59]--[2023-08-28 Mon 14:24] =>  0:25
+:END:
+** DONE test!
+** DONE No module named pypdf
+** DONE test!
+** DONE Make the zine avtuall a pdf...
+:LOGBOOK:
+CLOCK: [2023-08-28 Mon 14:29]--[2023-08-28 Mon 14:31] =>  0:02
+:END:
+** DONE test!!!
+** DONE faulty inpages saftey
+:LOGBOOK:
+CLOCK: [2023-08-28 Mon 14:31]--[2023-08-28 Mon 14:33] =>  0:02
+:END:
+** DONE Test!!!
+** DONE Spelling mistakes
+:LOGBOOK:
+CLOCK: [2023-08-28 Mon 14:34]--[2023-08-28 Mon 14:35] =>  0:01
+:END:
+** TODO Test and fix until pass
+:LOGBOOK:
+CLOCK: [2023-08-28 Mon 14:35]
+:END:
+** TODO Successfully cut the zine. (its now in inpages)
+** OKAY Make the caching util
+** TODO Make a template for accordian
+** TODO Begin work on render.py
+** TODO Cache front four pages
+** TODO Render them
+** TODO Cache back four pages
+** TODO Render them
+** TODO Unite them
+** TODO Send to Print.pdf
