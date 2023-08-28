@@ -56,11 +56,11 @@ else:
             if template["message"] != "":
                         logging.warning(f'template message: {template["message"]}')
 
-if os.listdir(module_directory+"/inpagelets") == 0:
+if os.listdir(directory.inpagelets) == 0:
             if args.force == True:
                         logging.info("deleting inpagelets")
-                        inpagelets_files = glob.glob("./inpagelets/*")
-                        for file in inpagelets_files:
+                        files = glob.glob(directory.inpagelets)
+                        for file in files:
                                     os.remove(file)
             else:
                        logging.warning("inpagelets/ is not empty. Delete them or use --force")

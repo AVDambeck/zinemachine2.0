@@ -65,7 +65,7 @@ CLOCK: [2023-08-27 Sun 19:31]--[2023-08-27 Sun 19:35] =>  0:04
 CLOCK: [2023-08-27 Sun 19:35]--[2023-08-27 Sun 21:14] =>  1:39
 :END:
 ** DONE Celebrate proof of concept
-* Do List 1.5! [20/26]
+* Do List 1.5! [27/27]
 So in theory, all the technical challenges are adressed. Current stratagy is just follow a zine all the way through my map, and make the shit actually work as it passes through
 ** DONE Get the zine scanned and prepared (generic)
 :LOGBOOK:
@@ -117,13 +117,29 @@ CLOCK: [2023-08-28 Mon 16:24]--[2023-08-28 Mon 16:27] =>  0:03
 :LOGBOOK:
 CLOCK: [2023-08-28 Mon 16:47]--[2023-08-28 Mon 16:50] =>  0:03
 :END:
-** TODO Cache front four pages
+** DONE Cache front four pages
 :LOGBOOK:
-CLOCK: [2023-08-28 Mon 16:50]
+CLOCK: [2023-08-28 Mon 16:50]--[2023-08-28 Mon 17:02] =>  0:12
 CLOCK: [2023-08-28 Mon 16:27]--[2023-08-28 Mon 16:46] =>  0:19
 :END:
-** TODO Render them
-** TODO Cache back four pages
-** TODO Render them
-** TODO Unite them
-** TODO Send to Print.pdf
+** DONE Render them
+:LOGBOOK:
+CLOCK: [2023-08-28 Mon 17:03]--[2023-08-28 Mon 17:40] =>  0:37
+:END:
+** DONE Cache back four pages
+:LOGBOOK:
+CLOCK: [2023-08-28 Mon 17:50]--[2023-08-28 Mon 18:02] =>  0:12
+:END:
+** DONE Render them
+** DONE Break
+:LOGBOOK:
+CLOCK: [2023-08-28 Mon 18:02]--[2023-08-28 Mon 18:08] =>  0:06
+:END:
+** DONE Unite them
+:LOGBOOK:
+CLOCK: [2023-08-28 Mon 18:08]--[2023-08-28 Mon 18:14] =>  0:06
+:END:
+** DONE Send to Print.pdf
+** TODO Test it!
+** TODO Git Commit!
+** TODO Celebrate!!!
