@@ -1,0 +1,9 @@
+{
+    "template_name":"letter with two pages",
+    "message":"",
+    "scan_size":[11, 8.5],
+    "pagelets": [
+	{"id":1, "dimension": [5.5,8.5], "location": [0,0], "rotation": 0},
+	{"id":2, "dimension": [5.5,8.5], "location": [5.5,0], "rotation": 0}
+    ]
+}

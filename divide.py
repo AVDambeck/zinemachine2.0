@@ -5,7 +5,7 @@ Abstract:
 1. import and define;
 2. import crop_template.json specified with cli flag;
 3. clear any images in files/ && clear cache;
-4. extract hte first of the pdf as a png to cache;
+4. extract the first of the pdf as a png to cache;
 5. for pagelet specified in tempalte, crop and export
 6. remove first page from cache;
 7. repeat 4-6 with rest of the pages;
@@ -24,8 +24,6 @@ import subprocess
 from util import cache
 from util import directory
 
-reader = PdfReader("SOURCE.pdf")
-number_of_pages = len(reader.pages)
 pagelet_index = 1
 output_dpi = 300
 
@@ -39,7 +37,8 @@ def inch_to_px(inch, dpi=output_dpi):
 parser = argparse.ArgumentParser()
 parser.add_argument("-v", "--verbose", action='store_true', help="Increase verbosity.")
 parser.add_argument("-t", "--template", help="location of crop template.")
-parser.add_argument("-f", "--force", help="overwrites files in the way")
+parser.add_argument("--force", help="overwrites files in the way")
+parser.add_argument("-f", "--file", help="input file")
 args = parser.parse_args()
 
 if args.verbose == True:
@@ -50,11 +49,15 @@ else:
 if args.template == None:
             logging.warning(f'No template specified. Did you forget --template?')
             exit()
-else:
-            f = open(args.template)
-            template = json.load(f)
-            if template["message"] != "":
-                        logging.warning(f'template message: {template["message"]}')
+f = open(args.template)
+template = json.load(f)
+if template["message"] != "":
+            logging.warning(f'template message: {template["message"]}')
+
+if args.file == None:
+             logging.warning(f'No file sepecified. Did you forget --file?')
+reader = PdfReader(args.file)
+number_of_pages = len(reader.pages)
 
 if os.listdir(directory.inpagelets) == 0:
             if args.force == True:
@@ -65,6 +68,7 @@ if os.listdir(directory.inpagelets) == 0:
             else:
                        logging.warning("inpagelets/ is not empty. Delete them or use --force")
                        exit()
+
 
 #3 clear imgs and cache
 cache.clear()
