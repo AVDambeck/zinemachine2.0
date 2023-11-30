@@ -29,9 +29,12 @@ output_dpi = 300
 
 module_directory = os.path.dirname(os.path.abspath(__file__))
 
-# Define inch_to_px function.
 def inch_to_px(inch, dpi=output_dpi):
             return(inch*dpi)
+
+def logandrun(command):
+            logging.info(command)
+            subprocess.run(command, shell=True)
 
 #2 catch json from flag
 parser = argparse.ArgumentParser()
@@ -56,12 +59,14 @@ template = json.load(f)
 if template["message"] != "":
             logging.warning(f'template message: {template["message"]}')
 
+# validate the type of the file and set input mode accordingly
 if args.file == None:
             logging.warning(f'No file sepecified. Did you forget --file?')
-# validate the type of the file.
+            exit()
 if args.file.endswith(".pdf"):
             reader = PdfReader(args.file)
 elif args.file.endswith(".jpg") or args.file.endswith(".png"):
+
             # TODO Convert the file to a pdf?? or just skip it? idk
             loggint.warning('lol cant handle single jpg or png input yet. oopsie me')
             exit()
@@ -122,9 +127,7 @@ for page_num in range(0,number_of_pages):
 
                         pagelet_name = f"img{pagelet_index:02}.jpg"
                         logging.info(pagelet_name)
-                        conversion_command = f"magick -density {output_dpi} {page_path} -flatten -crop {xlen_px}x{ylen_px}+{xoff_px}+{yoff_px} -rotate {rotation} {module_directory}/inpagelets/{pagelet_name};"
-                        logging.info(conversion_command)
-                        subprocess.run(conversion_command, shell=True)
+                        logandrun(f"magick -density {output_dpi} {page_path} -flatten -crop {xlen_px}x{ylen_px}+{xoff_px}+{yoff_px} -rotate {rotation} {module_directory}/inpagelets/{pagelet_name};")
                         pagelet_index += 1
 
             #6
