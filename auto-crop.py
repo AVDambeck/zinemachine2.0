@@ -25,12 +25,8 @@ from util import cache
 from util import directory
 
 pagelet_index = 1
-output_dpi = 300
 
 module_directory = os.path.dirname(os.path.abspath(__file__))
-
-def inch_to_px(inch, dpi=output_dpi):
-            return(inch*dpi)
 
 def logandrun(command):
             logging.info(command)
@@ -51,44 +47,8 @@ if args.verbose == True:
 else:
             logging.basicConfig(level=logging.WARNING, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 
-if args.template == None:
-            logging.warning(f'No template specified. Did you forget --template?')
-            exit()
-f = open(args.template)
-template = json.load(f)
-if template["message"] != "":
-            logging.warning(f'template message: {template["message"]}')
 
-# validate the type of the file and set input mode accordingly
-if args.file == None:
-            logging.warning(f'No file sepecified. Did you forget --file?')
-            exit()
-if args.file.endswith(".pdf"):
-            reader = PdfReader(args.file)
-elif args.file.endswith(".jpg") or args.file.endswith(".png"):
-
-            # TODO Convert the file to a pdf?? or just skip it? idk
-            loggint.warning('lol cant handle single jpg or png input yet. oopsie me')
-            exit()
-elif args.file.endswith("/"):
-            # TODO Handle directory.
-            loggint.warning('lol cant handle dir input yet. oopsie me')
-            exit()
-
-
-if args.dpi != None:
-            try:
-                        output_dpi = int(args.dpi)
-            except:
-                        logging.warning(f'failed to set dpi. Probobly wasnt an int or something. idfk dipshit')
-                        exit()
-
-debug_mode =    True
-if args.debug == None:
-            debug_mode = False
-
-number_of_pages = len(reader.pages)
-
+#3 clear imgs and cache
 if os.listdir(directory.inpagelets) == 0:
             if args.force == True:
                         logging.info("deleting inpagelets")
@@ -99,13 +59,63 @@ if os.listdir(directory.inpagelets) == 0:
                        logging.warning("inpagelets/ is not empty. Delete them or use --force")
                        exit()
 
-
-#3 clear imgs and cache
 cache.clear()
 
+# 2 okay back to 2 :^)
+if args.template == None:
+            logging.warning(f'No template specified. Did you forget --template?')
+            exit()
+f = open(args.template)
+template = json.load(f)
+if template["message"] != "":
+            logging.warning(f'template message: {template["message"]}')
 
+if args.dpi != None:
+            try:
+                        output_dpi = int(args.dpi)
+            except:
+                        logging.warning(f'failed to set dpi. Probobly wasnt an int or something. idfk dipshit')
+                        exit()
+else:
+            output_dpi = 300
+logging.info(f'dpi set to {output_dpi}')
+
+def inch_to_px(inch, dpi=output_dpi):
+            return(inch*dpi)
+
+
+
+# validate the type of the file and set input mode accordingly
+if args.file == None:
+            logging.warning(f'No file sepecified. Did you forget --file?')
+            exit()
+
+if args.file.endswith(".pdf"):
+            reader = PdfReader(args.file)
+
+elif args.file.endswith(".jpg") or args.file.endswith(".png"):
+            second_degree_input_file_path = directory.cache + "second_degree_input.pdf"
+            page_size = template["pagesize"]
+            second_degree_width_px = inch_to_px(page_size[0])
+            second_degree_height_px = inch_to_px(page_size[1])
+            logandrun(f'magick {args.file} -density {output_dpi} -quality 100 -resize {second_degree_width_px}x{second_degree_height_px} {second_degree_input_file_path}')
+            reader = PdfReader(second_degree_input_file_path)
+            # imo, this is the cleanest solution. We just convert the fie to the tpe we want. Yes we could just crop it directly while its a jpg, but that would mean putting a bunch of cruddy statments in part 5 to get the conversion right. keep the cruddy statments contianed so they can be debugged individually.
+
+elif args.file.endswith("/"):
+            # TODO Handle directory.
+            loggint.warning('lol cant handle dir input yet. oopsie me')
+            exit()
+
+
+debug_mode =    True
+if args.debug == None:
+            debug_mode = False
+
+number_of_pages = len(reader.pages)
+
+#4 extract first page of page of pdf to cache
 for page_num in range(0,number_of_pages):
-            #4 extract first page of page of pdf to cache
             writer = PdfWriter()
             writer.add_page(reader.pages[page_num])
             page_path = directory.cache + "page.pdf"
