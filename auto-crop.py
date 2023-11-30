@@ -61,11 +61,15 @@ if args.file == None:
 # validate the type of the file.
 if args.file.endswith(".pdf"):
             reader = PdfReader(args.file)
-
-if args.file.endswith(".jpg") or args.file.endswith(".png"):
+elif args.file.endswith(".jpg") or args.file.endswith(".png"):
             # TODO Convert the file to a pdf?? or just skip it? idk
-            loggint.warning('lol cant handle single jpg or png input yet. oppsie me')
+            loggint.warning('lol cant handle single jpg or png input yet. oopsie me')
             exit()
+elif args.file.endswith("/"):
+            # TODO Handle directory.
+            loggint.warning('lol cant handle dir input yet. oopsie me')
+            exit()
+
 
 if args.dpi != None:
             try:
