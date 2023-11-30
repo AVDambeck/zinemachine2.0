@@ -37,8 +37,10 @@ def inch_to_px(inch, dpi=output_dpi):
 parser = argparse.ArgumentParser()
 parser.add_argument("-v", "--verbose", action='store_true', help="Increase verbosity.")
 parser.add_argument("-t", "--template", help="location of crop template.")
-parser.add_argument("--force", help="overwrites files in the way")
-parser.add_argument("-f", "--file", help="input file")
+parser.add_argument("--force", help="overwrites files in the way.")
+parser.add_argument("-f", "--file", help="input file.")
+parser.add_argument("--dpi", help="output dpi. default 300.")
+parser.add_argument("--debug", action='store_true', help="enable debug mode.")
 args = parser.parse_args()
 
 if args.verbose == True:
@@ -55,8 +57,27 @@ if template["message"] != "":
             logging.warning(f'template message: {template["message"]}')
 
 if args.file == None:
-             logging.warning(f'No file sepecified. Did you forget --file?')
-reader = PdfReader(args.file)
+            logging.warning(f'No file sepecified. Did you forget --file?')
+# validate the type of the file.
+if args.file.endswith(".pdf"):
+            reader = PdfReader(args.file)
+
+if args.file.endswith(".jpg") or args.file.endswith(".png"):
+            # TODO Convert the file to a pdf?? or just skip it? idk
+            loggint.warning('lol cant handle single jpg or png input yet. oppsie me')
+            exit()
+
+if args.dpi != None:
+            try:
+                        output_dpi = int(args.dpi)
+            except:
+                        logging.warning(f'failed to set dpi. Probobly wasnt an int or something. idfk dipshit')
+                        exit()
+
+debug_mode =    True
+if args.debug == None:
+            debug_mode = False
+
 number_of_pages = len(reader.pages)
 
 if os.listdir(directory.inpagelets) == 0:
@@ -103,6 +124,7 @@ for page_num in range(0,number_of_pages):
                         pagelet_index += 1
 
             #6
-            cache.clear()
+            if debug_mode == False:
+                        cache.clear()
 
 exit()
