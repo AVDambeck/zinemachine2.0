@@ -24,6 +24,9 @@ import subprocess
 from util import cache
 from util import directory
 
+valid_formats = (".jpg", ".png")
+# In theory, any image format supported by imagemagick should work. If you have ur zines in gif or heic or something else weird, throwing those extensions in here should work.
+
 pagelet_index = 1
 
 module_directory = os.path.dirname(os.path.abspath(__file__))
@@ -83,7 +86,9 @@ logging.info(f'dpi set to {output_dpi}')
 def inch_to_px(inch, dpi=output_dpi):
             return(inch*dpi)
 
-
+page_size = template["pagesize"]
+page_width_px = inch_to_px(page_size[0])
+page_height_px = inch_to_px(page_size[1])
 
 # validate the type of the file and set input mode accordingly
 if args.file == None:
@@ -93,20 +98,33 @@ if args.file == None:
 if args.file.endswith(".pdf"):
             reader = PdfReader(args.file)
 
-elif args.file.endswith(".jpg") or args.file.endswith(".png"):
+elif args.file.lower().endswith(valid_formats):
             second_degree_input_file_path = directory.cache + "second_degree_input.pdf"
-            page_size = template["pagesize"]
-            second_degree_width_px = inch_to_px(page_size[0])
-            second_degree_height_px = inch_to_px(page_size[1])
-            logandrun(f'magick {args.file} -density {output_dpi} -quality 100 -resize {second_degree_width_px}x{second_degree_height_px} {second_degree_input_file_path}')
+            logandrun(f'magick {args.file} -density {outputpage_dpi} -quality 100 -resize {page_width_px}x{page_height_px} {second_degree_input_file_path}')
             reader = PdfReader(second_degree_input_file_path)
             # imo, this is the cleanest solution. We just convert the fie to the tpe we want. Yes we could just crop it directly while its a jpg, but that would mean putting a bunch of cruddy statments in part 5 to get the conversion right. keep the cruddy statments contianed so they can be debugged individually.
 
 elif args.file.endswith("/"):
-            # TODO Handle directory.
-            loggint.warning('lol cant handle dir input yet. oopsie me')
-            exit()
-
+            # get a list of the files
+            files = glob.glob(args.file + "*")
+            # if they dont look good [all imgs], exit
+            for file in files:
+                        if not file.lower().endswith(valid_formats):
+                                    logging.warning(f'{file} is not a supported format {valid_formats}')
+                                    exit()
+            # for each one, make it into a pdf in cache and add it to a lil list
+            infile_index = 1
+            for file in files:
+                        dir_intermediate_file_path = directory.cache + f'dir_intermediate_{infile_index:02}.pdf'
+                        # I've had some problems with the dpi scaling. If you get issues where you cropping does nothing or crops at the wrong scale, this is probobly where the issue is.
+                        #logandrun(f'magick {file} -density {output_dpi} -quality 100 -resize {page_width_px}x{page_height_px} {dir_intermediate_file_path}')
+                        logandrun(f'magick {file} -quality 100  {dir_intermediate_file_path}')
+                        infile_index += 1
+            # unite the list
+            second_degree_input_file_path = directory.cache + "second_degree_input.pdf"
+            logandrun(f'pdfunite {directory.cache}dir_intermediate* {second_degree_input_file_path}')
+            # open the reader on that list.
+            reader = PdfReader(second_degree_input_file_path)
 
 debug_mode =    True
 if args.debug == None:
