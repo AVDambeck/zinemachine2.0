@@ -1,0 +1,8 @@
+{
+    "template_name":"semiletter scanned with lots of space on the edge",
+    "message":"",
+    "scan_size":[11, 8.5], 
+    "pagelets": [
+	{"id":1, "dimension": [5.5,8.5], "location": [0,0], "rotation": 0}
+    ]
+}

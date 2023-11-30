@@ -1,7 +1,7 @@
 """
 Abstract:
 00. Often in scanning documents, the result will have more than one pagelet per pdf page. This is a program which inputs such a result, and outputs the isolated leaf;
-0. This is a program which takes an input SOURCE.pdf and a template.json, which describes where pagelets are on the page. Outputs a jpg sequence of leaf cropped out of the SOURCE.pdf pages, according to the specifications in crop_template.json;
+0. This is a program which takes an input set of pages, either as a pdf, or img sequence in a dir, and a template.json, which describes where pagelets are on the page. Outputs a jpg sequence of leaves cropped out of the SOURCE.pdf pages, according to the specifications in crop_template.json;
 1. import and define;
 2. import crop_template.json specified with cli flag;
 3. clear any images in files/ && clear cache;
