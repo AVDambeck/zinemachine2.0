@@ -100,7 +100,9 @@ if args.file.endswith(".pdf"):
 
 elif args.file.lower().endswith(valid_formats):
             second_degree_input_file_path = directory.cache + "second_degree_input.pdf"
-            logandrun(f'magick {args.file} -density {outputpage_dpi} -quality 100 -resize {page_width_px}x{page_height_px} {second_degree_input_file_path}')
+            #similar problems as described on line 120 below... idk whats up
+            # logandrun(f'magick {args.file} -density {output_dpi} -quality 100 -resize {page_width_px}x{page_height_px} {second_degree_input_file_path}')
+            logandrun(f'magick {args.file} -quality 100 {second_degree_input_file_path}')
             reader = PdfReader(second_degree_input_file_path)
             # imo, this is the cleanest solution. We just convert the fie to the tpe we want. Yes we could just crop it directly while its a jpg, but that would mean putting a bunch of cruddy statments in part 5 to get the conversion right. keep the cruddy statments contianed so they can be debugged individually.
 

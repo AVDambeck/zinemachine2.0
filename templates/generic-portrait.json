@@ -1,0 +1,15 @@
+{
+    "template_name":"Generic octi letter",
+    "message":"",
+    "pagesize":[8.5, 11],
+    "pagelets":[
+        {"id":1, "dimension": [4.25, 2.75], "location": [4.25, 0], "rotation": -90},
+        {"id":2, "dimension": [4.25, 2.75], "location": [4.25, 2.75], "rotation": -90},
+        {"id":3, "dimension": [4.25, 2.75], "location": [4.25, 5.5], "rotation": -90},
+        {"id":4, "dimension": [4.25, 2.75], "location": [4.25, 8.25], "rotation": -90},
+        {"id":5, "dimension": [4.25, 2.75], "location": [0, 0], "rotation": -90},
+        {"id":6, "dimension": [4.25, 2.75], "location": [0, 2.75], "rotation": -90},
+        {"id":7, "dimension": [4.25, 2.75], "location": [0, 5.5], "rotation": -90},
+        {"id":8, "dimension": [4.25, 2.75], "location": [0, 8.25], "rotation": -90}
+    ]
+}
